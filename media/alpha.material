@@ -1,0 +1,19 @@
+// alpha genrated by blender2ogre 0.6.0
+
+material alpha 
+{
+    receive_shadows on 
+    technique
+    {
+        pass alpha
+        {
+            ambient 0.0 0.0 0.0 0.0
+            diffuse 0.0 0.0 0.0 0.0
+            specular 0.5 0.5 0.5 0.0 0.0
+            emissive 0.0 0.0 0.0 0.0
+
+            scene_blend alpha_blend 
+
+        }
+    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GUILayout version="4">
+  <Window type="TaharezLook/GroupBox" name="game" >
+   <!-- <Property name="Text" value="Cfguration Window" />
+    <Property name="TitlebarFont" value="DejaVuSans-12" />-->
+    
+    <Property name="Area" value="{{0.2,0},{0,0},{0.43,300},{0.33,300}}" />
+    <!-- Sound parameter -->
+  
+   
+    <Window type="TaharezLook/StaticText" name="clock" >
+      <Property name="Text" value="reloj" />
+      <Property name="Area" value="{{0.2,0},{0.05,0},{0.3,0},{0.15,0}}" />
+      
+    </Window>
+    <Window type="TaharezLook/Button" name="PauseButton" >
+      <Property name="Text" value=" || " />
+      <Property name="Area" value="{{0.71,0},{0.06,0},{0.79,0},{0.14,0}}" />
+    </Window>
+
+     <Window type="TaharezLook/Button" name="finishButton" >
+      <Property name="Text" value="salir" />
+      <Property name="Area" value="{{0.38,0},{0.52,0},{0.6,0},{0.62,0}}" />
+    </Window>
+    <Window type="TaharezLook/Button" name="restartButton" >
+      <Property name="Text" value="Reiniciar" />
+      <Property name="Area" value="{{0.38,0},{0.64,0},{0.6,0},{0.74,0}}" />
+    </Window>
+   
+  </Window>
+
+
+ 
+
+</GUILayout>

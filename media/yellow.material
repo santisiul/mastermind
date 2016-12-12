@@ -1,0 +1,35 @@
+// yellow genrated by blender2ogre 0.6.0
+
+material yellow 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass yellow
+        {
+            ambient 0.8000000715255737 0.5340811014175415 0.003855807241052389 1.0
+            diffuse 0.640000066757203 0.42726488750077607 0.0030846458388067155 1.0
+            specular 0.8333333730697632 0.8333333730697632 0.8333333730697632 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+        }
+    }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GUILayout version="4">
+  <Window type="TaharezLook/FrameWindow" name="menu" >
+   <!-- <Property name="Text" value="Cfguration Window" />
+    <Property name="TitlebarFont" value="DejaVuSans-12" />-->
+   
+    <Property name="TitlebarEnabled" value="false" />
+    <Property name="Area" value="{{0.2,0},{0.15,0},{0.43,300},{0.33,300}}" />
+    <!-- Sound parameter -->
+
+    <Window type="TaharezLook/StaticText" name="title" >
+      <Property name="Text" value="MasterMind" />
+      <Property name="Area" value="{{0.32,0},{0.14,0},{0.68,0},{0.28,0}}" />
+      <Property name="Font" value="DejaVuSans-20" />
+   
+    </Window>
+    
+     <Window type="TaharezLook/Button" name="PlayButton" >
+      <Property name="Text" value="Jugar" />
+      <Property name="Area" value="{{0.38,0},{0.4,0},{0.6,0},{0.5,0}}" />
+    </Window>
+
+    <Window type="TaharezLook/Button" name="ScoreButton" >
+      <Property name="Text" value="Score" />
+      <Property name="Area" value="{{0.38,0},{0.52,0},{0.6,0},{0.62,0}}" />
+    </Window>
+
+    <Window type="TaharezLook/Button" name="CreditsButton" >
+      <Property name="Text" value="Credits" />
+      <Property name="Area" value="{{0.38,0},{0.64,0},{0.6,0},{0.74,0}}" />
+    </Window>
+
+    <!-- Exit button -->
+    <Window type="TaharezLook/Button" name="ExitButton" >
+      <Property name="Text" value="Salir" />
+      <Property name="Area" value="{{0.38,0},{0.76,0},{0.6,0},{0.86,0}}" />
+    </Window>
+    <!-- Apply button -->
+   
+  </Window>
+</GUILayout>
