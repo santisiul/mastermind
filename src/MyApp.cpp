@@ -123,6 +123,13 @@ void MyApp::createGUI(){
              CEGUI::Event::Subscriber(&MyFrameListener::play,
                     _framelistener));
 
+  CEGUI::Window* scoreButton = menu->getChild("ScoreButton");
+  scoreButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+             CEGUI::Event::Subscriber(&MyFrameListener::score,
+                    _framelistener));
+
+
+
   CEGUI::Window* credits = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("credits.layout");
   credits->setVisible(false);
   
@@ -152,27 +159,33 @@ void MyApp::createGUI(){
                     _framelistener));
   game->getChild("restartButton")->setVisible(false);
 
+  CEGUI::Window* win = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("win.layout");
+  win->setVisible(false);
 
-  /*
-  CEGUI::Window* returnButton = credits->getChild("ReturnButton");
-  returnButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+  CEGUI::Window* finishWin = win->getChild("finishButton");
+  finishWin->subscribeEvent(CEGUI::PushButton::EventClicked,
+             CEGUI::Event::Subscriber(&MyFrameListener::finish,
+                    _framelistener));
+
+  CEGUI::Window* restartWin = win->getChild("restartButton");
+  restartWin->subscribeEvent(CEGUI::PushButton::EventClicked,
+             CEGUI::Event::Subscriber(&MyFrameListener::restart,
+                    _framelistener));
+
+
+  CEGUI::Window* score = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("score.layout");
+  score->setVisible(false);
+
+  CEGUI::Window* returnSButton = score->getChild("ReturnButton");
+  returnSButton->subscribeEvent(CEGUI::PushButton::EventClicked,
              CEGUI::Event::Subscriber(&MyFrameListener::back,
                     _framelistener));
-  */
-
   //Attaching buttons
   sheet->addChild(menu);
   sheet->addChild(credits);
   sheet->addChild(game);
+  sheet->addChild(win);
+  sheet->addChild(score);
   CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(sheet);
 }
 
-
-
-/*
-void MyApp::createOverlay() {
-  _overlayManager = Ogre::OverlayManager::getSingletonPtr();
-  Ogre::Overlay* overlay = _overlayManager->getByName("Info");
-  overlay->show();
-}
-*/

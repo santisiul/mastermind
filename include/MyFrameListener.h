@@ -3,6 +3,7 @@
 //#include <OgreRenderWindow.h>
 #include <OIS.h> 
 #include <CEGUI.h>
+#include "File.h"
 /*#include <OgreOverlaySystem.h>
 #include <OgreOverlayElement.h>
 #include <OgreOverlayManager.h>
@@ -68,6 +69,8 @@ private:
   	bool inGame;
   	bool evaluate;
     bool moveCamera;
+
+    File *file;
   //	bool win;
 
   Ogre::Ray setRayQuery(int posx, int posy, Ogre::uint32 mask);
@@ -94,10 +97,12 @@ public:
   void reloadOptions();
   void translateCamera(Ogre::Real deltaT);
   void clock();
+  void winner();
   Ogre::SceneNode* createObject(string mesh, string nameNode, string material, Ogre::Vector3 position, Ogre::uint32 mask);
 
   bool quit(const CEGUI::EventArgs &e);
   bool credits(const CEGUI::EventArgs &e);
+  bool score(const CEGUI::EventArgs &e);
   bool play(const CEGUI::EventArgs &e);
   bool back(const CEGUI::EventArgs &e);
   bool pause(const CEGUI::EventArgs &e);

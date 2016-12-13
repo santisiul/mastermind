@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GUILayout version="4">
+  <Window type="TaharezLook/GroupBox" name="win" >
+   <!-- <Property name="Text" value="Cfguration Window" />
+    <Property name="TitlebarFont" value="DejaVuSans-12" />-->
+    
+    <Property name="Area" value="{{0.2,0},{0,0},{0.43,300},{0.33,300}}" />
+   
+   
+    <Window type="TaharezLook/StaticText" name="title" >
+      <Property name="Text" value="Ganaste" />
+      <Property name="Area" value="{{0.32,0},{0.16,0},{0.68,0},{0.28,0}}" />
+      <Property name="Font" value="DejaVuSans-20" />
+    </Window>
+
+    <Window type="TaharezLook/Label" name="nameLabel" >
+      <Property name="Text" value="Nombre" />
+      <Property name="Area" value="{{0.2,0},{0.3,0},{0.4,0},{0.4,0}}" />
+       <Property name="Font" value="DejaVuSans-10" />
+    </Window>
+    <Window type="TaharezLook/Editbox" name="nameEditbox" >
+      <!--<Property name="Text" value="salir" />-->
+      <Property name="Area" value="{{0.42,0},{0.3,0},{0.65,0},{0.38,0}}" />
+    </Window>
+
+     <Window type="TaharezLook/Button" name="finishButton" >
+      <Property name="Text" value="salir" />
+      <Property name="Area" value="{{0.38,0},{0.52,0},{0.6,0},{0.62,0}}" />
+    </Window>
+    <Window type="TaharezLook/Button" name="restartButton" >
+      <Property name="Text" value="Reiniciar" />
+      <Property name="Area" value="{{0.38,0},{0.64,0},{0.6,0},{0.74,0}}" />
+    </Window>
+   
+  </Window>
+
+
+ 
+
+</GUILayout>

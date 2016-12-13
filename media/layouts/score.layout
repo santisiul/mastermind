@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GUILayout version="4">
+  <Window type="TaharezLook/FrameWindow" name="score" >
+    <Property name="Text" value="Format String Window"/>
+    <Property name="TitlebarEnabled" value="false" />
+     <Property name="Area" value="{{0.2,0},{0.15,0},{0.43,300},{0.33,300}}" />
+
+    <Window type="TaharezLook/StaticText" name="title" >
+      <Property name="Text" value="Score" />
+      <Property name="Area" value="{{0.32,0},{0.16,0},{0.68,0},{0.28,0}}" />
+       <Property name="Font" value="DejaVuSans-20" />
+    </Window> 
+    <Window type="TaharezLook/StaticText" name="text" >
+      <Property name="Text" value="" />
+      <Property name="Area" value="{{0.34,0},{0.42,0},{0.64,0},{0.72,0}}" />
+       
+    </Window>
+   <!-- 
+    <Window type="TaharezLook/StaticText" name="title" >
+      <Property name="Text" value="Creditos" />
+      <Property name="Area" value="{{0.32,0},{0.16,0},{0.68,0},{0.28,0}}" />
+      <Property name="Font" value="DejaVuSans-20" />
+    </Window>
+
+    <Window type="TaharezLook/StaticText" name="title" >
+      <Property name="Text" value="Creditos" />
+      <Property name="Area" value="{{0.32,0},{0.16,0},{0.68,0},{0.28,0}}" />
+      <Property name="Font" value="DejaVuSans-20" />
+    </Window>
+   -->
+    <!-- Exit button -->
+    <Window type="TaharezLook/Button" name="ReturnButton" >
+      <Property name="Text" value="Volver" />
+      <Property name="Area" value="{{0.784,0},{0.85,0},{0.968,0},{0.95,0}}" />
+    </Window>
+    
+  </Window>
+</GUILayout>
