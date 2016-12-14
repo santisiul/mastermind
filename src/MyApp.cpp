@@ -27,7 +27,7 @@ int MyApp::start() {
   // _sceneManager->addRenderQueueListener(new Ogre::OverlaySystem());
   
   Ogre::Camera* cam = _sceneManager->createCamera("MainCamera");
-  cam->setPosition(Ogre::Vector3(0,0,50));
+  cam->setPosition(Ogre::Vector3(40,0,50));
   cam->lookAt(Ogre::Vector3(0,0,0));
   cam->setNearClipDistance(5);
   cam->setFarClipDistance(10000);

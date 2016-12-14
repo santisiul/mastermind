@@ -56,15 +56,9 @@ private:
 
   bool translate;
 
+  vector<Ogre::SceneNode*> tmp;
   Ogre::Vector3 moveCam;
-  //  vector<Ogre::Vector3> combPos;
-
-  //vector<Ogre::SceneNode*> spheresComb;  
-  	
-  //  bool menu;
-  //  bool initial;
-  	//bool credits;
-  //	bool score;
+  
     bool init;
   	bool inGame;
   	bool evaluate;

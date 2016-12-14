@@ -2,7 +2,7 @@
 
 material alpha 
 {
-    receive_shadows on 
+    
     technique
     {
         pass alpha

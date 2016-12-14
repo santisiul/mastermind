@@ -156,6 +156,8 @@ void MyFrameListener::initialState(){
   ball = NULL;
   indexPosition = 0;
 
+  _camera->setPosition(Ogre::Vector3(30,0,50));
+  _camera->lookAt(Ogre::Vector3(0,0,0));
   
     if (materials.size() == 0)
     {
@@ -178,6 +180,7 @@ void MyFrameListener::initialState(){
       hintsPos.push_back(Ogre::Vector3(7,-14.5,1));
       hintsPos.push_back(Ogre::Vector3(8,-14.5,1));
 
+      //for (int i = 0; i < combinationSize; ++i){ tmp.push_back(NULL); }
     }
     else{
       for (int i = 0; i < combinationSize; ++i)
@@ -196,8 +199,11 @@ void MyFrameListener::initialState(){
 
       for (int i = 0; i < combinationSize; ++i){ randomSpheres.pop_back(); }
       for (int i = 0; i < combinationSize; ++i){ randomCombination.pop_back(); }
+      //for (int i = 0; i < combinationSize; ++i){ tmp[i]=NULL; }
     }
     
+     
+
     Ogre::SceneNode* node1 = createObject("Plane.mesh", "back", "back", Ogre::Vector3(0,0,0), STAGE);
     _sceneManager->getRootSceneNode()->addChild(node1);
 
@@ -206,9 +212,9 @@ void MyFrameListener::initialState(){
     //_sceneManager->getRootSceneNode()->addChild(node2);
   
   
-    /*Ogre::SceneNode* node = createObject("front.mesh", "front", "front", Ogre::Vector3(0,16.7,2.6), STAGE);
+    Ogre::SceneNode* node = createObject("front.mesh", "front", "front", Ogre::Vector3(0,16.7,2.6), STAGE);
     _sceneManager->getRootSceneNode()->getChild("back")->addChild(node);
-    */
+    
  
   
   
@@ -289,6 +295,15 @@ void MyFrameListener::choose(int posx, int posy, Ogre::Real deltaT){
             _sceneManager->getRootSceneNode()->removeChild( node);
             _sceneManager->getRootSceneNode()->getChild("back")->addChild(node);
 
+            /*for (int i = 0; i < tmp.size(); ++i)
+            {
+             // string nmat = tmp[i]->getAttachedObject(0)->getSubEntity(0)->getMaterialName();
+              if (mat == nmat)
+              {
+                tmp[i] = NULL;
+              }
+            }*/
+
           }
           else if(indexPosition < combinationSize){
             combination[indexPosition] = pos;
@@ -296,6 +311,11 @@ void MyFrameListener::choose(int posx, int posy, Ogre::Real deltaT){
             finalPosition = posCombination[indexPosition];
             _sceneManager->getRootSceneNode()->getChild("back")->removeChild(node);
             _sceneManager->getRootSceneNode()->addChild(node);
+
+           
+           // tmp[indexPosition]= node;
+           
+            
           }
           else{
             translate = false;
@@ -384,7 +404,9 @@ void MyFrameListener::evaluation(){
       inGame =  true;
       Ogre::Vector3 relocate2 = Ogre::Vector3(0, 4*(rounds-1), 0);
       ostringstream sstrm1; sstrm1 << "table" << rounds;
-                      node = createObject("bar.mesh", sstrm1.str(), "alpha", Ogre::Vector3(0,-14 ,1) + relocate2, SPHERE);
+                      node = createObject("bar.mesh", sstrm1.str(), "alpha", Ogre::Vector3(0,-14 ,1.2) + relocate2, SPHERE);
+                    //  static_cast<Ogre::Entity*>(node->getAttachedObject(0))->getSubEntity(0)->setScale(Ogre::Vector3(1,1,0.1));
+                      node->setScale( Ogre::Vector3(1,1,0.01));
       _sceneManager->getRootSceneNode()->addChild(node);
     }
 
@@ -402,6 +424,9 @@ void MyFrameListener::evaluation(){
     {
       posCombination[i] = posCombination[i] + Ogre::Vector3(0,4,0);
       combination[i] = 9;               //Se limpia la combinacion
+      //tmp[i]->get
+
+      //string nmat = tmp[i]->getAttachedObject(0)->getSubEntity(0)->getMaterialName();
     }
     
 
@@ -439,6 +464,7 @@ void MyFrameListener::createCombination(int elementos){
          if(color == randomCombination[i]) repetead = true;
     }
     if(!repetead) randomCombination.push_back(color);
+    cout<<"combinacion "<<color;
   }
   
   if (randomSpheres.size() == 0)
@@ -484,11 +510,22 @@ void MyFrameListener::winner()
   CEGUI::Window* rootWindow=  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow();
   CEGUI::Window* winWindow = rootWindow->getChildRecursive("win"); 
   winWindow->setVisible(true);
+  winWindow->moveToFront();
 }
 
 bool MyFrameListener::keyPressed(const OIS::KeyEvent& evt)
 {
   if(evt.key==OIS::KC_ESCAPE) return _quit=true;
+  if(evt.key==OIS::KC_C){
+    //Ogre::Vector3 v = ;
+    if (_camera->getPosition() == Ogre::Vector3(0,0,50)){
+      _camera->setPosition(Ogre::Vector3(40,0,50));
+    }
+    else{
+      _camera->setPosition(Ogre::Vector3(0,0,50));
+    }
+    _camera->lookAt(Ogre::Vector3(0,0,0));
+  }
  
   CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyDown(static_cast<CEGUI::Key::Scan>(evt.key));
   CEGUI::System::getSingleton().getDefaultGUIContext().injectChar(evt.text);
@@ -561,12 +598,27 @@ bool MyFrameListener::score(const CEGUI::EventArgs &e)
   CEGUI::Window* scoreWindow = rootWindow->getChildRecursive("score");
   scoreWindow->setVisible(true);
 
-  stringstream sstrm; 
+  stringstream sstrm; sstrm << "";
+
+  /*int i = file->getGamers() - 10;
+  if(i < 0){ i = 0;}
+
+  CEGUI::Window* label = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/Label","label");
+  label->setText("texto");
+  label->setSize(CEGUI::USize(CEGUI::UDim(0.15,0),CEGUI::UDim(0.05,0)));
+  label->setPosition(CEGUI::Vector2<CEGUI::UDim>(CEGUI::UDim(0.5-0.15/2,0),CEGUI::UDim(0.2,0)));
+
+  scoreWindow->addChild(label);*/
+ //label->VerticalAlignment(VA_TOP);
+
+
   for (int i = 0; i < file->getGamers(); ++i)
   {
      sstrm << file->getGamer(i) << endl;
   }
-  sstrm << "[vert-alignment='top']";
+  //sstrm << "[vert-alignment='top']";
+  cout<<"gamers"<<file->getGamers()<<endl;
+  cout<< sstrm.str() <<endl;;
   scoreWindow->getChild("text")->setText(sstrm.str());
   return true;
 }
@@ -577,7 +629,8 @@ bool MyFrameListener::play(const CEGUI::EventArgs &e)
   rootWindow->getChildRecursive("menu")->setVisible(false);
   rootWindow->getChildRecursive("game")->setVisible(true);
 
-
+  _camera->setPosition(Ogre::Vector3(0,0,50));
+  _camera->lookAt(Ogre::Vector3(0,0,0));
   //createCombination(combinationSize);
   inGame = true;
   return true;
@@ -622,14 +675,18 @@ bool MyFrameListener::finish(const CEGUI::EventArgs &e)
 
   CEGUI::Window* winWindow = rootWindow->getChildRecursive("win");
    string name = winWindow->getChildRecursive("nameEditbox")->getText().c_str();
+   cout<<"rounds"<<rounds<<endl;
   if (winWindow->isVisible())
   {
 
-    stringstream sstrm; sstrm << name << " " << rounds << static_cast<int>(chronometer / 60) << ":" << (static_cast<int>(chronometer) % 60)<<endl;
+    stringstream sstrm; sstrm << name << " " << rounds << " "<< static_cast<int>(chronometer / 60) << ":" << (static_cast<int>(chronometer) % 60)<<endl;
     cout<<sstrm.str()<<endl;
     file->addGamer(sstrm.str());
   }
   rootWindow->getChildRecursive("win")->setVisible(false);
+
+  _camera->setPosition(Ogre::Vector3(0,0,50));
+  _camera->lookAt(Ogre::Vector3(0,0,0));
 
   initialState();
   //Ogre::SceneNode* node = static_cast<Ogre::SceneNode*>(_sceneManager->getRootSceneNode()->getChild("back")->getChild("front"));
@@ -644,6 +701,8 @@ bool MyFrameListener::finish(const CEGUI::EventArgs &e)
 
 bool MyFrameListener::restart(const CEGUI::EventArgs &e)
 {
+  
+
   CEGUI::Window* rootWindow=  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow();
   CEGUI::Window* gameWindow = rootWindow->getChildRecursive("game");
   gameWindow->getChildRecursive("finishButton")->setVisible(false);
@@ -652,6 +711,8 @@ bool MyFrameListener::restart(const CEGUI::EventArgs &e)
   rootWindow->getChildRecursive("win")->setVisible(false);
 
   initialState();
+  _camera->setPosition(Ogre::Vector3(0,0,50));
+  _camera->lookAt(Ogre::Vector3(0,0,0));
   inGame = true;
   return true;
 }

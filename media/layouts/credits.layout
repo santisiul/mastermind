@@ -14,8 +14,8 @@
     
     <Window type="TaharezLook/StaticText" name="item1" >
       <Property name="Text" value="Realizado por:" />
-      <Property name="Area" value="{{0.34,0},{0.42,0},{0.64,0},{0.52,0}}" />
-      <Property name="Font" value="DejaVuSans-10" />
+      <Property name="Area" value="{{0.3,0},{0.42,0},{0.64,0},{0.52,0}}" />
+     
     </Window>
 
      <Window type="TaharezLook/StaticText" name="item2" >
@@ -23,6 +23,13 @@
       <Property name="Area" value="{{0.3,0},{0.54,0},{0.7,0},{0.64,0}}" />
       <Property name="Font" value="DejaVuSans-10" />
     </Window>
+
+    <Window type="TaharezLook/StaticText" name="item3" >
+      <Property name="Text" value="CEDV 2017" />
+      <Property name="Area" value="{{0.4,0},{0.64,0},{0.7,0},{0.74,0}}" />
+     
+    </Window>
+
     <!-- Exit button -->
     <Window type="TaharezLook/Button" name="ReturnButton" >
       <Property name="Text" value="Volver" />
